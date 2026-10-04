@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TAMARA — Neo Brutalist Pitch Deck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   TAMARA — ONE FILE HTML
+   CSS + JS + ANIMATION
+   Logo: logo.png (place logo.png beside this HTML file)
+   ========================================================= */
+
+:root{
+  --bg:#eef3ef;
+  --paper:#fffdf7;
+  --ink:#101714;
+  --green:#087a55;
+  --green-dark:#064b38;
+  --mint:#baf5df;
+  --lime:#d8ff63;
+  --yellow:#ffd34e;
+  --orange:#ff9f43;
+  --pink:#ff7fa8;
+  --blue:#8bdcff;
+  --white:#ffffff;
+  --shadow:8px 8px 0 var(--ink);
+  --shadow-sm:5px 5px 0 var(--ink);
+  --radius:22px;
+  --border:3px solid var(--ink);
+}
+
+*{box-sizing:border-box;font-family:"Poppins",sans-serif}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:"Poppins",sans-serif;
+  background:
+    radial-gradient(circle at 10% 10%,rgba(216,255,99,.25),transparent 22%),
+    radial-gradient(circle at 90% 80%,rgba(139,220,255,.22),transparent 25%),
+    var(--bg);
+  color:var(--ink);
+  overflow-x:hidden;
+}
+button,input,textarea,select{font-family:"Poppins",sans-serif}
+button{font:inherit}
+::selection{background:var(--lime);color:var(--ink)}
+
+.progress{
+  position:fixed;z-index:1000;left:0;top:0;height:7px;width:0;
+  background:var(--ink);box-shadow:0 2px 0 rgba(255,255,255,.4);
+  transition:width .25s ease;
+}
+.topbar{
+  position:fixed;z-index:999;top:18px;left:50%;transform:translateX(-50%);
+  width:min(1120px,calc(100% - 28px));
+  display:flex;justify-content:space-between;align-items:center;gap:15px;
+  pointer-events:none;
+}
+.brand-mini{
+  pointer-events:auto;display:flex;align-items:center;gap:10px;
+  padding:8px 13px;background:var(--paper);border:var(--border);
+  border-radius:14px;box-shadow:4px 4px 0 var(--ink);
+  font-weight:900;font-size:12px;letter-spacing:.8px;
+}
+.brand-mini img{width:27px;height:27px;object-fit:contain}
+.nav-actions{display:flex;gap:8px;pointer-events:auto}
+.nav-btn{
+  border:var(--border);background:var(--paper);box-shadow:4px 4px 0 var(--ink);
+  width:42px;height:42px;border-radius:12px;cursor:pointer;font-weight:900;
+  transition:.18s ease;display:grid;place-items:center;
+}
+.nav-btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+.nav-btn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--ink)}
+
+.deck{width:min(1160px,calc(100% - 24px));margin:90px auto 60px}
+.slide{
+  min-height:690px;position:relative;overflow:hidden;margin:0 auto 30px;
+  padding:70px 72px;border:var(--border);border-radius:28px;
+  background:var(--paper);box-shadow:var(--shadow);
+  isolation:isolate;
+}
+.slide::before{
+  content:"";position:absolute;inset:0;z-index:-2;
+  background:
+    linear-gradient(135deg,rgba(255,255,255,.9),transparent 38%),
+    radial-gradient(circle at 90% 0%,rgba(216,255,99,.45),transparent 25%);
+}
+.slide::after{
+  content:"";position:absolute;width:330px;height:330px;right:-140px;bottom:-170px;
+  border-radius:50%;border:var(--border);background:rgba(139,220,255,.18);
+  z-index:-1;animation:float 8s ease-in-out infinite;
+}
+.cover{
+  min-height:720px;color:var(--white);
+  background:var(--green);box-shadow:12px 12px 0 var(--ink);
+}
+.cover::before{
+  background:
+    radial-gradient(circle at 80% 20%,rgba(216,255,99,.35),transparent 22%),
+    linear-gradient(135deg,#087a55,#064b38 70%);
+}
+.cover::after{border-color:var(--white);background:rgba(255,255,255,.06)}
+.cover-grid{
+  min-height:575px;display:grid;grid-template-columns:1.15fr .85fr;
+  gap:50px;align-items:center;
+}
+.logo-wrap{
+  width:110px;height:110px;background:var(--white);border:var(--border);
+  border-radius:24px;display:grid;place-items:center;box-shadow:7px 7px 0 var(--ink);
+  transform:rotate(-4deg);margin-bottom:25px;
+}
+.logo-wrap img{width:78px;height:78px;object-fit:contain}
+.kicker{
+  display:inline-flex;align-items:center;gap:8px;padding:8px 12px;
+  background:var(--lime);color:var(--ink);border:var(--border);
+  border-radius:10px;box-shadow:4px 4px 0 var(--ink);
+  font-size:11px;font-weight:900;letter-spacing:1.6px;text-transform:uppercase;
+  margin-bottom:20px;
+}
+.cover h1{
+  font-size:clamp(58px,9vw,105px);line-height:.88;margin:0 0 22px;
+  letter-spacing:-5px;font-weight:900;text-shadow:7px 7px 0 var(--ink);
+}
+.cover .subtitle{font-size:clamp(17px,2vw,23px);line-height:1.55;max-width:700px;font-weight:600}
+.cover-badge{
+  margin-top:28px;display:inline-block;background:var(--white);color:var(--ink);
+  border:var(--border);border-radius:999px;padding:11px 18px;
+  box-shadow:5px 5px 0 var(--ink);font-weight:800;font-size:12px;
+}
+.cover-art{position:relative;min-height:390px;display:grid;place-items:center}
+.blob{
+  width:310px;height:310px;background:var(--lime);border:var(--border);
+  border-radius:45% 55% 58% 42% / 43% 45% 55% 57%;
+  box-shadow:14px 14px 0 var(--ink);
+  animation:morph 9s ease-in-out infinite;
+}
+.float-card{
+  position:absolute;border:var(--border);background:var(--paper);color:var(--ink);
+  border-radius:17px;padding:15px 18px;box-shadow:6px 6px 0 var(--ink);
+  font-weight:800;font-size:12px;animation:float 5s ease-in-out infinite;
+}
+.fc1{top:28px;right:20px;transform:rotate(4deg)}
+.fc2{bottom:60px;left:5px;transform:rotate(-5deg);animation-delay:-2s}
+.fc3{bottom:8px;right:42px;background:var(--yellow);transform:rotate(3deg);animation-delay:-1s}
+
+h2{font-size:clamp(32px,4vw,50px);line-height:1.05;letter-spacing:-2px;margin:0 0 15px;font-weight:900}
+h3{font-size:18px;line-height:1.2;margin:0 0 9px;font-weight:900}
+.lead{font-size:15px;line-height:1.8;color:#52615b;max-width:880px}
+.grid{display:grid;gap:18px;position:relative;z-index:2}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+.card{
+  border:var(--border);border-radius:18px;padding:22px;background:var(--white);
+  box-shadow:var(--shadow-sm);transition:transform .25s ease,box-shadow .25s ease;
+  position:relative;overflow:hidden;
+}
+.card::after{
+  content:"";position:absolute;inset:-60% auto auto -30%;
+  width:70%;height:130%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.75),transparent);
+  transform:rotate(15deg);transition:.55s ease;
+}
+.card:hover{transform:translate(-4px,-5px);box-shadow:9px 10px 0 var(--ink)}
+.card:hover::after{left:110%}
+.card p,.text{font-size:13px;line-height:1.75;color:#5e6d67;margin:0}
+.num{
+  width:39px;height:39px;display:grid;place-items:center;border:var(--border);
+  background:var(--lime);border-radius:11px;box-shadow:3px 3px 0 var(--ink);
+  font-size:13px;font-weight:900;margin-bottom:15px;
+}
+.bigquote{
+  margin-top:25px;padding:19px 22px;border:var(--border);border-radius:16px;
+  background:var(--yellow);box-shadow:var(--shadow-sm);font-size:15px;line-height:1.65;
+  font-weight:700;position:relative;z-index:2;
+}
+.section-head{display:flex;justify-content:space-between;align-items:flex-start;gap:25px;margin-bottom:25px}
+.slide-tag{
+  border:var(--border);background:var(--white);padding:9px 12px;border-radius:11px;
+  box-shadow:4px 4px 0 var(--ink);font-size:11px;font-weight:900;white-space:nowrap;
+}
+.flow{display:flex;align-items:stretch;gap:8px;position:relative;z-index:2;margin-top:28px}
+.step{
+  flex:1;border:var(--border);background:var(--white);border-radius:16px;
+  padding:18px;box-shadow:5px 5px 0 var(--ink);transition:.22s ease;
+}
+.step:hover{transform:translateY(-5px) rotate(-1deg)}
+.step b{display:block;font-size:11px;color:var(--green);margin-bottom:8px;font-weight:900}
+.step span{font-size:11px;line-height:1.55;color:#66756f}
+.arrow{display:grid;place-items:center;font-size:23px;font-weight:900}
+.pill{
+  display:inline-block;padding:7px 11px;border:2px solid var(--ink);border-radius:999px;
+  background:var(--mint);box-shadow:3px 3px 0 var(--ink);font-size:10px;font-weight:900;
+}
+.arch{display:flex;align-items:center;justify-content:center;gap:12px;margin:34px 0}
+.node{
+  min-width:190px;padding:21px;border:var(--border);border-radius:18px;
+  background:var(--white);box-shadow:var(--shadow-sm);text-align:center;
+}
+.node.main{background:var(--green);color:var(--white)}
+.node small{display:block;font-size:10px;line-height:1.45;margin-top:7px;opacity:.78}
+.stat{
+  font-size:20px;line-height:1.2;font-weight:900;color:var(--green);
+  margin-bottom:8px;
+}
+.case{
+  padding:23px;border:var(--border);border-radius:19px;background:#f4f9f6;
+  box-shadow:var(--shadow-sm);
+}
+.footer{
+  position:absolute;left:72px;right:72px;bottom:24px;display:flex;
+  justify-content:space-between;font-size:10px;font-weight:800;color:#788680;
+  z-index:5;
+}
+.cover .footer{color:#d5ebe3}
+.note{
+  font-size:11px;line-height:1.6;color:#697771;margin-top:15px;
+  border-left:3px solid var(--green);padding-left:12px;
+}
+.reveal{opacity:0;transform:translateY(35px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
+.reveal.visible{opacity:1;transform:none}
+.delay-1{transition-delay:.08s}.delay-2{transition-delay:.16s}.delay-3{transition-delay:.24s}
+.cursor-glow{
+  position:fixed;z-index:0;width:180px;height:180px;border-radius:50%;
+  pointer-events:none;background:radial-gradient(circle,rgba(216,255,99,.20),transparent 68%);
+  transform:translate(-50%,-50%);mix-blend-mode:multiply;
+}
+.toast{
+  position:fixed;z-index:1100;bottom:24px;left:50%;transform:translate(-50%,30px);
+  padding:11px 15px;border:var(--border);border-radius:12px;background:var(--ink);color:white;
+  box-shadow:5px 5px 0 var(--lime);font-size:11px;font-weight:800;opacity:0;
+  transition:.25s ease;pointer-events:none;
+}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+@keyframes float{0%,100%{transform:translateY(0) rotate(var(--r,0deg))}50%{transform:translateY(-13px) rotate(var(--r,0deg))}}
+@keyframes morph{0%,100%{border-radius:45% 55% 58% 42% / 43% 45% 55% 57%;transform:rotate(-5deg)}50%{border-radius:58% 42% 42% 58% / 55% 57% 43% 45%;transform:rotate(5deg)}}
+@keyframes shine{from{transform:translateX(-120%)}to{transform:translateX(120%)}}
+
+@media(max-width:850px){
+  .deck{width:calc(100% - 14px);margin-top:82px}
+  .slide{padding:52px 24px;min-height:720px;border-radius:22px;box-shadow:6px 6px 0 var(--ink)}
+  .cover-grid{grid-template-columns:1fr;gap:15px}
+  .cover-art{min-height:270px}
+  .blob{width:220px;height:220px}
+  .g2,.g3,.g4{grid-template-columns:1fr}
+  .flow{display:grid;grid-template-columns:1fr}
+  .arrow{transform:rotate(90deg);height:25px}
+  .arch{flex-direction:column}
+  .footer{left:24px;right:24px}
+  .section-head{display:block}.slide-tag{display:inline-block;margin-top:12px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+@media print{
+  body{background:white}.topbar,.progress,.cursor-glow,.toast{display:none!important}
+  .deck{width:100%;margin:0}.slide{page-break-after:always;margin:0;border-radius:0;box-shadow:none}
+}
+
+/* ===== PREMIUM PRELOADER ===== */
+.preloader{
+  position:fixed;inset:0;z-index:5000;background:#064b38;color:#fff;
+  display:grid;place-items:center;overflow:hidden;transition:opacity .8s cubic-bezier(.22,1,.36,1),visibility .8s;
+}
+.preloader.hide{opacity:0;visibility:hidden;pointer-events:none}
+.loader-grid{
+  position:absolute;inset:0;opacity:.13;
+  background-image:linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px);
+  background-size:38px 38px;transform:perspective(500px) rotateX(58deg) scale(1.7);
+  transform-origin:center bottom;animation:gridMove 5s linear infinite;
+}
+.loader-shell{position:relative;z-index:2;text-align:center;width:min(420px,82vw)}
+.loader-logo{
+  width:94px;height:94px;margin:0 auto 22px;border:3px solid #101714;border-radius:25px;
+  background:#fff;display:grid;place-items:center;box-shadow:8px 8px 0 #101714;
+  animation:loaderPop .9s cubic-bezier(.2,1.4,.4,1) both;
+}
+.loader-logo img{width:66px;height:66px;object-fit:contain}
+.loader-name{font-size:42px;font-weight:900;letter-spacing:-2px;line-height:1;animation:loaderText .8s .12s both}
+.loader-sub{margin-top:8px;font-size:11px;letter-spacing:1.8px;text-transform:uppercase;font-weight:700;opacity:.72;animation:loaderText .8s .2s both}
+.loader-track{
+  height:9px;border:2px solid #101714;background:#fff;margin:30px 0 11px;
+  border-radius:999px;overflow:hidden;box-shadow:4px 4px 0 #101714;
+}
+.loader-track span{display:block;width:0;height:100%;background:#d8ff63;transition:width .16s ease}
+.loader-status{font-size:10px;font-weight:800;opacity:.75;letter-spacing:.5px;min-height:15px}
+@keyframes loaderPop{0%{opacity:0;transform:scale(.5) rotate(-12deg)}70%{transform:scale(1.08) rotate(3deg)}100%{opacity:1;transform:scale(1) rotate(-3deg)}}
+@keyframes loaderText{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes gridMove{from{background-position:0 0,0 0}to{background-position:0 38px,38px 0}}
+
+/* ===== EXTRA SMOOTH MICRO-INTERACTION ===== */
+.slide{transition:transform .55s cubic-bezier(.22,1,.36,1),box-shadow .55s cubic-bezier(.22,1,.36,1)}
+.slide:hover{transform:translateY(-2px);box-shadow:10px 12px 0 var(--ink)}
+.card,.step,.node{will-change:transform}
+.reveal{transition:opacity .85s cubic-bezier(.22,1,.36,1),transform .85s cubic-bezier(.22,1,.36,1),filter .85s ease}
+.reveal{filter:blur(5px)}
+.reveal.visible{filter:blur(0)}
+.kicker{animation:softPulse 3.5s ease-in-out infinite}
+@keyframes softPulse{0%,100%{box-shadow:4px 4px 0 var(--ink)}50%{box-shadow:6px 6px 0 var(--ink)}}
+
+
+/* =========================================================
+   TAMARA — FINAL VISUAL SYSTEM
+   Satu warna, satu skala tipografi, satu ritme animasi.
+   Logo selalu diambil dari ./logo.png
+   ========================================================= */
+:root{
+  --bg:#edf2ef;
+  --paper:#fffdf8;
+  --ink:#101714;
+  --green:#087a55;
+  --green-dark:#064b38;
+  --mint:#baf5df;
+  --lime:#d8ff63;
+  --yellow:#ffd34e;
+  --blue:#8bdcff;
+  --white:#fff;
+  --border:3px solid var(--ink);
+  --shadow:8px 8px 0 var(--ink);
+  --shadow-sm:5px 5px 0 var(--ink);
+  --r-xl:28px;
+  --r-lg:20px;
+  --r-md:15px;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+body{
+  font-size:14px;
+  line-height:1.65;
+  background:
+    radial-gradient(circle at 8% 8%,rgba(216,255,99,.18),transparent 23%),
+    radial-gradient(circle at 92% 82%,rgba(139,220,255,.15),transparent 25%),
+    var(--bg);
+}
+.deck{width:min(1160px,calc(100% - 24px));}
+.slide{
+  min-height:690px;
+  padding:66px 70px;
+  border-radius:var(--r-xl);
+  border:var(--border);
+  box-shadow:var(--shadow);
+  transition:transform .65s var(--ease),box-shadow .65s var(--ease);
+}
+.slide:hover{transform:translateY(-3px);box-shadow:11px 13px 0 var(--ink)}
+.cover{min-height:720px}
+h1{font-weight:900}
+h2{font-size:clamp(32px,4vw,48px);line-height:1.08;letter-spacing:-1.8px}
+h3{font-size:17px;line-height:1.25}
+.lead{font-size:14px;line-height:1.8}
+.card,.case,.step,.node{
+  border:var(--border);
+  box-shadow:var(--shadow-sm);
+  border-radius:var(--r-lg);
+  transition:transform .55s var(--ease),box-shadow .55s var(--ease),background .35s ease;
+}
+.card:hover,.case:hover,.step:hover,.node:hover{
+  transform:translate(-4px,-5px) rotate(-.35deg);
+  box-shadow:9px 10px 0 var(--ink);
+}
+.kicker,.slide-tag,.pill{
+  border:2px solid var(--ink);
+  box-shadow:3px 3px 0 var(--ink);
+}
+.kicker{animation:none}
+.bigquote{
+  border:var(--border);
+  border-radius:var(--r-md);
+  box-shadow:var(--shadow-sm);
+}
+.reveal{
+  opacity:1;
+  transform:none;
+  filter:blur(0);
+  transition:
+    opacity .8s var(--ease),
+    transform .8s var(--ease),
+    filter .8s var(--ease);
+}
+.reveal.visible{
+  opacity:1;
+  transform:none;
+  filter:blur(0);
+}
+.delay-1{transition-delay:.08s}.delay-2{transition-delay:.16s}.delay-3{transition-delay:.24s}
+
+/* logo */
+.logo-wrap{
+  width:106px;height:106px;border-radius:24px;
+  border:var(--border);box-shadow:7px 7px 0 var(--ink);
+  background:#fff;
+}
+.logo-wrap img{width:78px;height:78px;object-fit:contain}
+.brand-mini{
+  border:var(--border);box-shadow:4px 4px 0 var(--ink);
+  border-radius:13px;background:var(--paper);
+}
+.brand-mini img{width:27px;height:27px;object-fit:contain}
+
+/* premium loader */
+.preloader{
+  background:
+    radial-gradient(circle at 50% 35%,rgba(216,255,99,.12),transparent 26%),
+    var(--green-dark);
+}
+.loader-shell{width:min(430px,84vw)}
+.loader-logo{
+  width:100px;height:100px;border-radius:25px;
+  border:var(--border);box-shadow:8px 8px 0 var(--ink);
+  animation:tamaraLoaderIn .9s var(--ease) both;
+}
+.loader-logo img{width:70px;height:70px;object-fit:contain}
+.loader-name{
+  font-size:46px;line-height:1;font-weight:900;letter-spacing:-2.5px;
+  animation:tamaraTextIn .75s .1s var(--ease) both;
+}
+.loader-sub{font-size:10px;letter-spacing:2px;animation:tamaraTextIn .75s .18s var(--ease) both}
+.loader-track{
+  height:10px;border:var(--border);box-shadow:4px 4px 0 var(--ink);
+  margin:28px 0 11px;
+}
+.loader-track span{background:var(--lime)}
+.loader-status{font-size:10px}
+@keyframes tamaraLoaderIn{
+  0%{opacity:0;transform:translateY(18px) scale(.65) rotate(-10deg)}
+  70%{opacity:1;transform:translateY(-4px) scale(1.04) rotate(2deg)}
+  100%{opacity:1;transform:none}
+}
+@keyframes tamaraTextIn{
+  from{opacity:0;transform:translateY(12px)}
+  to{opacity:1;transform:none}
+}
+
+/* gentle ambient motion */
+.blob{animation:morph 11s ease-in-out infinite}
+.float-card{animation:float 6s ease-in-out infinite}
+.fc1{--r:4deg}.fc2{--r:-5deg;animation-delay:-2s}.fc3{--r:3deg;animation-delay:-3s}
+.slide::after{animation:float 10s ease-in-out infinite}
+.cursor-glow{transition:left .12s ease-out,top .12s ease-out}
+
+/* navigation */
+.nav-btn{transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
+.nav-btn:hover{transform:translate(-2px,-2px)}
+.nav-btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+
+@media(max-width:850px){
+  .slide{padding:50px 24px;min-height:720px}
+  h2{font-size:31px}
+  .lead{font-size:13px}
+  .footer{left:24px;right:24px}
+}
+@media(prefers-reduced-motion:reduce){
+  .slide,.card,.case,.step,.node,.reveal,.float-card,.blob,.slide::after{animation:none!important;transition:none!important}
+}
+
+
+/* ===== FINAL RESPONSIVE SIZING — LAPTOP + MOBILE ===== */
+:root{--deck-max:1180px}
+.deck{
+  width:min(var(--deck-max),calc(100vw - 40px));
+  margin:88px auto 42px;
+}
+.slide{
+  width:100%;
+  min-height:0;
+  height:auto;
+  padding:54px 60px;
+  margin-bottom:26px;
+}
+.cover{min-height:650px}
+.cover-grid{min-height:520px;gap:38px}
+.cover-art{min-height:330px}
+.footer{left:60px;right:60px;bottom:20px}
+
+/* 13–16 inch laptop / desktop: keep each slide visually compact */
+@media (min-width:851px) and (max-height:850px){
+  .deck{margin-top:78px;margin-bottom:34px}
+  .slide{padding:48px 56px}
+  .cover{min-height:620px}
+  .cover-grid{min-height:500px}
+  .cover-art{min-height:300px}
+  .cover h1{font-size:clamp(54px,7.2vw,86px)}
+  h2{font-size:clamp(30px,3.2vw,44px)}
+  .lead{font-size:13px;line-height:1.65}
+  .card{padding:18px}
+  .card p,.text{font-size:12px;line-height:1.6}
+  .flow{margin-top:20px}
+  .step{padding:15px}
+  .arch{margin:24px 0}
+}
+
+/* tablet */
+@media (min-width:601px) and (max-width:850px){
+  .deck{width:calc(100% - 24px);margin-top:82px}
+  .slide{padding:44px 34px;min-height:0}
+  .cover{min-height:720px}
+  .cover-grid{min-height:0}
+  .footer{left:34px;right:34px}
+}
+
+/* phone: width follows device, height follows content */
+@media (max-width:600px){
+  .topbar{top:10px;width:calc(100% - 20px);gap:8px}
+  .brand-mini{padding:6px 9px;font-size:10px;border-width:2px;box-shadow:3px 3px 0 var(--ink)}
+  .brand-mini img{width:23px;height:23px}
+  .nav-actions{gap:6px}
+  .nav-btn{width:36px;height:36px;border-width:2px;border-radius:10px;box-shadow:3px 3px 0 var(--ink)}
+  .deck{width:calc(100% - 18px);margin:66px auto 28px}
+  .slide{
+    min-height:0;
+    padding:38px 19px 54px;
+    margin-bottom:20px;
+    border-width:2px;
+    border-radius:20px;
+    box-shadow:5px 5px 0 var(--ink);
+  }
+  .cover{min-height:690px;padding:34px 19px 52px}
+  .cover-grid{display:grid;grid-template-columns:1fr;gap:8px;min-height:0}
+  .logo-wrap{width:82px;height:82px;border-width:2px;border-radius:19px;box-shadow:5px 5px 0 var(--ink);margin-bottom:17px}
+  .logo-wrap img{width:60px;height:60px}
+  .kicker{font-size:9px;padding:6px 9px;margin-bottom:14px;box-shadow:3px 3px 0 var(--ink)}
+  .cover h1{font-size:clamp(50px,16vw,72px);letter-spacing:-3px;line-height:.9;margin-bottom:16px}
+  .cover .subtitle{font-size:14px;line-height:1.5}
+  .cover-badge{margin-top:20px;padding:9px 13px;font-size:10px;box-shadow:4px 4px 0 var(--ink)}
+  .cover-art{min-height:250px;margin-top:8px}
+  .blob{width:min(205px,62vw);height:min(205px,62vw);border-width:2px;box-shadow:9px 9px 0 var(--ink)}
+  .float-card{padding:10px 12px;font-size:9px;border-width:2px;box-shadow:4px 4px 0 var(--ink)}
+  .fc1{top:15px;right:0}.fc2{bottom:42px;left:0}.fc3{bottom:0;right:15px}
+  .section-head{margin-bottom:18px}
+  h2{font-size:clamp(27px,8.3vw,34px);letter-spacing:-1.2px;line-height:1.08}
+  h3{font-size:16px}
+  .lead{font-size:12px;line-height:1.65}
+  .grid{gap:13px}
+  .card,.case,.step,.node{border-width:2px;border-radius:15px;box-shadow:4px 4px 0 var(--ink)}
+  .card{padding:16px}
+  .card p,.text{font-size:11.5px;line-height:1.6}
+  .num{width:34px;height:34px;border-width:2px;border-radius:9px;box-shadow:2px 2px 0 var(--ink);font-size:11px;margin-bottom:11px}
+  .bigquote{margin-top:18px;padding:15px 16px;border-width:2px;border-radius:13px;box-shadow:4px 4px 0 var(--ink);font-size:12px;line-height:1.55}
+  .slide-tag{font-size:9px;padding:7px 9px;border-width:2px;box-shadow:3px 3px 0 var(--ink)}
+  .flow{gap:6px;margin-top:18px}
+  .step{padding:14px}
+  .step b{font-size:10px;margin-bottom:5px}
+  .step span{font-size:10px;line-height:1.5}
+  .arrow{height:22px;font-size:19px}
+  .arch{gap:8px;margin:22px 0}
+  .node{min-width:0;width:100%;padding:16px}
+  .node small{font-size:9px}
+  .stat{font-size:18px}
+  .note{font-size:10px;margin-top:11px}
+  .footer{left:19px;right:19px;bottom:17px;font-size:8px}
+  .toast{bottom:16px;font-size:9px;padding:9px 12px}
+  .cursor-glow{display:none}
+}
+
+@media (max-width:380px){
+  .cover{min-height:650px}
+  .cover h1{font-size:48px}
+  .cover-art{min-height:220px}
+  .slide{padding-left:16px;padding-right:16px}
+  .footer{left:16px;right:16px}
+}
+
+
+/* =========================================================
+   FULLSCREEN PRESENTATION + SIDEBAR NAVIGATION
+   Desktop: fixed left sidebar + one slide fills viewport.
+   Mobile: compact horizontal bottom navigation.
+   ========================================================= */
+html,body{height:100%;}
+body{overflow:hidden;}
+.side-menu{
+  position:fixed;z-index:1200;left:14px;top:14px;bottom:14px;width:216px;
+  padding:16px 12px;border:var(--border);border-radius:22px;background:rgba(255,253,248,.96);
+  box-shadow:8px 8px 0 var(--ink);display:flex;flex-direction:column;gap:15px;
+  backdrop-filter:blur(14px);
+}
+.side-brand{display:flex;align-items:center;gap:10px;padding:8px 6px 14px;border-bottom:2px solid var(--ink);}
+.side-brand img{width:42px;height:42px;object-fit:contain;border:2px solid var(--ink);border-radius:11px;background:#fff;padding:3px;}
+.side-brand strong{display:block;font-size:15px;font-weight:900;letter-spacing:.5px;line-height:1.05;}
+.side-brand small{display:block;font-size:7.5px;font-weight:700;line-height:1.3;margin-top:4px;color:#65736d;}
+.side-label{font-size:8px;font-weight:900;letter-spacing:1.3px;color:#7a8781;padding:0 7px;}
+.side-nav{display:flex;flex-direction:column;gap:6px;overflow:auto;padding:1px 3px 5px;}
+.side-nav::-webkit-scrollbar{width:4px}.side-nav::-webkit-scrollbar-thumb{background:var(--ink);border-radius:99px}
+.side-nav button{
+  width:100%;display:flex;align-items:center;gap:9px;border:2px solid transparent;border-radius:11px;
+  background:transparent;padding:8px 8px;cursor:pointer;text-align:left;color:var(--ink);
+  font:800 10px/1.15 "Poppins",sans-serif;transition:transform .25s var(--ease),background .25s ease,border-color .25s ease,box-shadow .25s ease;
+}
+.side-nav button b{font-size:8px;min-width:24px;height:24px;display:grid;place-items:center;border:2px solid var(--ink);border-radius:7px;background:var(--white);}
+.side-nav button:hover{transform:translateX(3px);background:#f1f7f3;border-color:var(--ink);}
+.side-nav button.active{background:var(--green);color:#fff;border-color:var(--ink);box-shadow:4px 4px 0 var(--ink);transform:translateX(2px);}
+.side-nav button.active b{background:var(--lime);color:var(--ink);}
+.topbar{position:fixed;z-index:1190;top:16px;left:auto;right:24px;transform:none;width:auto;pointer-events:none;}
+.topbar .brand-mini{display:none;}
+.deck{
+  width:auto;max-width:none;height:100vh;overflow-y:auto;overflow-x:hidden;
+  margin:0 0 0 242px;padding:14px 24px 18px 8px;
+  scroll-snap-type:y mandatory;scroll-behavior:smooth;
+  scrollbar-width:thin;scrollbar-color:var(--ink) transparent;
+}
+.deck::-webkit-scrollbar{width:7px}.deck::-webkit-scrollbar-thumb{background:var(--ink);border-radius:99px}
+.slide{
+  width:100%;min-height:calc(100vh - 32px);height:auto;margin:0 0 18px;padding:46px 56px;
+  scroll-snap-align:start;scroll-snap-stop:always;display:flex;flex-direction:column;justify-content:flex-start;
+}
+.slide:last-child{margin-bottom:0;}
+.cover{min-height:calc(100vh - 32px);}
+.cover-grid{min-height:0;flex:1;}
+.footer{bottom:18px;}
+.progress{position:fixed;left:242px;right:0;top:0;width:0;height:5px;z-index:1300;}
+.cursor-glow{z-index:1;}
+
+@media (max-height:760px) and (min-width:851px){
+  .side-menu{top:9px;bottom:9px;padding:11px 9px;gap:9px;}
+  .side-brand{padding-bottom:9px}.side-brand img{width:35px;height:35px}.side-brand strong{font-size:13px}.side-brand small{font-size:6.5px}
+  .side-nav{gap:3px}.side-nav button{padding:6px 7px;font-size:9px}.side-nav button b{width:22px;height:22px;font-size:7px}
+  .deck{padding-top:10px;padding-bottom:12px;}
+  .slide{min-height:calc(100vh - 22px);padding:34px 48px;margin-bottom:12px;}
+  .cover{min-height:calc(100vh - 22px);}
+  .cover-grid{gap:26px}.logo-wrap{width:90px;height:90px;margin-bottom:17px}.logo-wrap img{width:66px;height:66px}
+  .cover h1{font-size:clamp(48px,6.4vw,76px);margin-bottom:14px}.cover .subtitle{font-size:15px}.cover-art{min-height:250px}.blob{width:245px;height:245px}
+  .section-head{margin-bottom:16px}.grid{gap:13px}.card{padding:16px}.card p,.text{font-size:11.5px;line-height:1.5}.lead{font-size:12px;line-height:1.55}.bigquote{margin-top:16px;padding:14px 17px;font-size:12px;line-height:1.5}.flow{margin-top:16px}.step{padding:13px}.step span{font-size:10px}.arch{margin:17px 0}
+}
+
+@media(max-width:850px){
+  body{overflow:hidden;}
+  .side-menu{
+    left:8px;right:8px;top:auto;bottom:8px;width:auto;height:66px;padding:7px 8px;
+    border-radius:18px;display:block;box-shadow:5px 5px 0 var(--ink);
+  }
+  .side-brand,.side-label{display:none;}
+  .side-nav{height:100%;display:flex;flex-direction:row;align-items:center;gap:6px;overflow-x:auto;overflow-y:hidden;padding:0;}
+  .side-nav button{flex:0 0 auto;width:auto;min-width:54px;height:49px;padding:4px 7px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:2px;border-radius:10px;text-align:center;}
+  .side-nav button b{min-width:25px;width:25px;height:21px;font-size:7px;border-radius:6px;}
+  .side-nav button span{font-size:7px;white-space:nowrap;}
+  .topbar{top:9px;right:10px;}
+  .progress{left:0;right:0;height:4px;}
+  .deck{margin:0;width:100%;height:100vh;padding:7px 8px 82px;overflow-y:auto;scroll-snap-type:y mandatory;}
+  .slide{min-height:calc(100vh - 89px);height:auto;margin:0 0 12px;padding:32px 20px 48px;border-radius:19px;scroll-snap-align:start;}
+  .cover{min-height:calc(100vh - 89px);}
+  .cover-grid{align-items:center;}
+  .footer{left:20px;right:20px;bottom:15px;}
+}
+
+@media(max-width:600px){
+  .nav-btn{width:35px;height:35px;}
+  .deck{padding-left:7px;padding-right:7px;padding-bottom:82px;}
+  .slide{padding:28px 17px 47px;min-height:calc(100vh - 89px);}
+  .cover{min-height:calc(100vh - 89px);}
+  .cover-grid{gap:4px;}
+  .cover-art{min-height:205px;}
+  .blob{width:min(180px,55vw);height:min(180px,55vw);}
+  .section-head{margin-bottom:14px;}
+  .grid{gap:10px;}
+  .card{padding:13px;}
+  .bigquote{margin-top:13px;}
+}
+
+@media(max-width:380px){
+  .side-menu{height:62px;bottom:6px;left:6px;right:6px;}
+  .side-nav button{min-width:50px;height:45px;}
+  .side-nav button span{font-size:6.5px;}
+  .deck{padding-bottom:74px;}
+  .slide,.cover{min-height:calc(100vh - 80px);}
+}
+
+
+/* ===== READABILITY BOOST: BODY + SIDEBAR ===== */
+.side-menu{width:244px;padding:17px 13px;gap:15px;}
+.side-brand img{width:46px;height:46px;}
+.side-brand strong{font-size:17px;}
+.side-brand small{font-size:8.5px;}
+.side-label{font-size:10px;}
+.side-nav{gap:7px;}
+.side-nav button{padding:10px 9px;gap:10px;font-size:11.5px;line-height:1.2;}
+.side-nav button b{font-size:9px;min-width:28px;width:28px;height:28px;}
+.deck{margin-left:270px;padding-left:12px;padding-right:22px;}
+.progress{left:270px;}
+.slide{padding:48px 60px;}
+.lead{font-size:15px;line-height:1.72;}
+.card p,.text{font-size:13px;line-height:1.62;}
+.note{font-size:12px;}
+.step span{font-size:12px;line-height:1.55;}
+.step b{font-size:12px;}
+.node small{font-size:11px;}
+.stat{font-size:21px;}
+
+@media (max-height:760px) and (min-width:851px){
+  .side-menu{width:244px;padding:12px 10px;gap:9px;}
+  .side-brand img{width:39px;height:39px;}
+  .side-brand strong{font-size:15px;}
+  .side-brand small{font-size:7.5px;}
+  .side-label{font-size:9px;}
+  .side-nav{gap:4px;}
+  .side-nav button{padding:7px 8px;font-size:10.5px;gap:8px;}
+  .side-nav button b{width:24px;height:24px;min-width:24px;font-size:8px;}
+  .deck{margin-left:270px;padding-left:10px;padding-right:18px;}
+  .progress{left:270px;}
+  .slide{padding:34px 50px;}
+  .lead{font-size:13.5px;line-height:1.58;}
+  .card p,.text{font-size:12.5px;line-height:1.55;}
+  .note{font-size:11px;}
+  .step span{font-size:11px;}
+  .step b{font-size:11.5px;}
+  .node small{font-size:10.5px;}
+}
+
+@media(max-width:850px){
+  .side-menu{width:auto;}
+  .side-nav button{font-size:9px;}
+  .side-nav button span{font-size:8.5px;}
+  .side-nav button b{font-size:8px;width:27px;height:23px;min-width:27px;}
+  .deck{margin-left:0;padding-left:8px;padding-right:8px;}
+  .progress{left:0;}
+  .lead{font-size:14px;line-height:1.65;}
+  .card p,.text{font-size:12.5px;line-height:1.58;}
+  .step span{font-size:11px;}
+  .step b{font-size:11px;}
+  .node small{font-size:10px;}
+  .note{font-size:11px;}
+}
+
+@media(max-width:600px){
+  .side-nav button{min-width:62px;height:51px;padding:4px 8px;}
+  .side-nav button span{font-size:8px;}
+  .side-nav button b{font-size:8px;width:27px;height:23px;}
+  .lead{font-size:13.5px;line-height:1.62;}
+  .card p,.text{font-size:12px;line-height:1.58;}
+  .step span{font-size:10.5px;}
+  .step b{font-size:10.5px;}
+  .node small{font-size:9.5px;}
+  .note{font-size:10.5px;}
+}
+
+/* Content visibility fix: every slide remains readable; active slide gets a subtle entrance animation. */
+.slide .reveal{opacity:1!important;transform:none!important;filter:none!important;}
+.slide.is-active .reveal{animation:tamaraReveal .55s cubic-bezier(.2,.8,.2,1) both;}
+@keyframes tamaraReveal{from{opacity:.25;transform:translateY(14px);filter:blur(3px)}to{opacity:1;transform:none;filter:none}}
+
+/* =========================================================
+   FINAL NAVIGATION SYNC — ALL 12 SLIDES
+   ========================================================= */
+html,body{font-family:"Poppins",sans-serif!important;}
+.deck{overscroll-behavior-y:contain;touch-action:pan-y;}
+.slide,.card,.case,.step,.node,.side-menu,.side-nav button,.nav-btn,.toast{font-family:"Poppins",sans-serif!important;}
+.nav-btn{font-size:18px;line-height:1;min-width:44px;min-height:44px;}
+.nav-btn:disabled{opacity:.42;cursor:default;transform:none!important;box-shadow:3px 3px 0 var(--ink)!important;}
+.side-nav button{user-select:none;-webkit-user-select:none;}
+.side-nav button span,.side-nav button b{font-family:"Poppins",sans-serif!important;}
+@media(max-width:850px){
+  .nav-btn{width:38px;height:38px;min-width:38px;min-height:38px;font-size:17px;}
+  .deck{touch-action:pan-y;}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="preloader" id="preloader" aria-label="Memuat TAMARA">
+  <div class="loader-shell">
+    <div class="loader-logo"><img src="./logo.png" alt="TAMARA"></div>
+    <div class="loader-name">TAMARA</div>
+    <div class="loader-sub">Tata Modal &amp; Rencana Usaha</div>
+    <div class="loader-track"><span id="loaderBar"></span></div>
+    <div class="loader-status" id="loaderStatus">Menyiapkan ekosistem...</div>
+  </div>
+  <div class="loader-grid"></div>
+</div>
+
+<div class="progress" id="progress"></div>
+<div class="cursor-glow" id="cursorGlow"></div>
+
+<aside class="side-menu" id="sideMenu" aria-label="Navigasi TAMARA">
+  <div class="side-brand">
+    <img src="./logo.png" alt="Logo TAMARA">
+    <div><strong>TAMARA</strong><small>Tata Modal &amp; Rencana Usaha</small></div>
+  </div>
+  <div class="side-label">MENU PRESENTASI</div>
+  <nav class="side-nav">
+    <button data-go="0" class="active"><b>01</b><span>Cover</span></button>
+    <button data-go="1"><b>02</b><span>Latar Belakang</span></button>
+    <button data-go="2"><b>03</b><span>Masalah</span></button>
+    <button data-go="3"><b>04</b><span>Solusi</span></button>
+    <button data-go="4"><b>05</b><span>Fokus UMKM</span></button>
+    <button data-go="5"><b>06</b><span>Alur TAMARA</span></button>
+    <button data-go="6"><b>07</b><span>Syariah</span></button>
+    <button data-go="7"><b>08</b><span>Studi Kasus</span></button>
+    <button data-go="8"><b>09</b><span>Features</span></button>
+    <button data-go="9"><b>10</b><span>Model Bisnis</span></button>
+    <button data-go="10"><b>11</b><span>Trust &amp; Risk</span></button>
+    <button data-go="11"><b>12</b><span>Outcome</span></button>
+  </nav>
+</aside>
+
+<div class="topbar">
+  <div class="brand-mini">
+    <img src="./logo.png" alt="Logo TAMARA">
+    <span>TAMARA</span>
+  </div>
+  <div class="nav-actions">
+    <button class="nav-btn" id="prev" aria-label="Slide sebelumnya">←</button>
+    <button class="nav-btn" id="next" aria-label="Slide berikutnya">→</button>
+  </div>
+</div>
+
+<div class="deck">
+<!-- 01 -->
+<section class="slide cover" data-slide="1">
+  <div class="cover-grid">
+    <div class="reveal">
+      <div class="logo-wrap"><img src="./logo.png" alt="Logo TAMARA"></div>
+      <div class="kicker">TAMARA • Tata Modal &amp; Rencana Usaha</div>
+      <h1>TAMARA</h1>
+      <div style="font-size:22px;font-weight:800">Ekosistem Pembiayaan UMKM Syariah</div>
+      <p class="subtitle">Kelola Modal. Rencanakan Usaha. Tumbuh Secara Syariah.</p>
+      <div class="cover-badge">Kota Serang • UMKM Produktif • Pembiayaan Syariah</div>
+    </div>
+    <div class="cover-art reveal delay-2"><div class="blob"></div><div class="float-card fc1">KELOLA</div><div class="float-card fc2">ANALISIS</div><div class="float-card fc3">HUBUNGKAN</div></div>
+  </div>
+  <div class="footer"><span>Pitch Deck TAMARA</span><span>01</span></div>
+</section>
+
+
+<!-- 02 -->
+<section class="slide" data-slide="2">
+  <div class="section-head reveal">
+    <div><div class="kicker">01 • Latar Belakang + Data</div><h2>UMKM Besar Secara Ekonomi, tetapi Data dan Akses Modal Masih Menjadi Tantangan</h2></div>
+    <div class="slide-tag">DATA</div>
+  </div>
+
+  <p class="lead reveal delay-1">
+    Data Kota Serang menunjukkan bahwa basis UMKM sangat penting bagi ekonomi lokal. Namun, perubahan angka administratif dan kebutuhan pencatatan keuangan memperlihatkan bahwa persoalan UMKM bukan sekadar jumlah pelaku usaha, melainkan juga bagaimana usaha yang aktif dapat dipetakan dan didukung secara tepat.
+  </p>
+
+  <div class="grid g4" style="margin-top:30px">
+    <div class="card reveal delay-1">
+      <div class="num">7.035</div>
+      <h3>Usaha Mikro</h3>
+      <p>Jumlah usaha mikro Kota Serang pada 2024 menurut RPJMD Kota Serang 2025–2029.</p>
+    </div>
+    <div class="card reveal delay-2">
+      <div class="num">596</div>
+      <h3>Usaha Kecil</h3>
+      <p>Jumlah usaha kecil Kota Serang pada 2024 menurut data pemerintah daerah.</p>
+    </div>
+    <div class="card reveal delay-2">
+      <div class="num">29</div>
+      <h3>Usaha Menengah</h3>
+      <p>Jumlah usaha menengah Kota Serang pada 2024 menurut data pemerintah daerah.</p>
+    </div>
+    <div class="card reveal delay-3">
+      <div class="num">7.660</div>
+      <h3>Total Tercatat</h3>
+      <p>Akumulasi mikro + kecil + menengah pada tabel layanan koperasi/UMKM 2024.</p>
+    </div>
+  </div>
+
+  <div class="grid g2" style="margin-top:18px">
+    <div class="case reveal delay-2">
+      <span class="pill">DINAMIKA DATA</span>
+      <h3 style="margin-top:14px">2023 → 2024</h3>
+      <p class="text">Data administratif mencatat usaha mikro turun dari 9.239 menjadi 7.035 unit, sedangkan usaha kecil turun dari 2.880 menjadi 596 unit. Perubahan ini tidak otomatis berarti seluruh usaha berhenti; justru menunjukkan pentingnya pemutakhiran dan pemetaan usaha aktif.</p>
+    </div>
+    <div class="case reveal delay-3">
+      <span class="pill">SINYAL KEBUTUHAN</span>
+      <h3 style="margin-top:14px">Data Keuangan Menjadi Penting</h3>
+      <p class="text">Pada 2026, Pemkot Serang menyampaikan bahwa data UMKM yang dihimpun telah mendekati 50.000 pelaku usaha dan sedang disiapkan sistem pelaporan keuangan untuk memetakan UMKM yang aktif. Ini memperkuat relevansi TAMARA sebagai sistem pencatatan dan analisis usaha.</p>
+    </div>
+  </div>
+
+  <div class="bigquote reveal delay-3">
+    <b>Masalah yang hendak dijawab TAMARA:</b> bagaimana data usaha yang tersebar dan dinamis dapat diubah menjadi informasi yang berguna untuk menentukan kebutuhan modal dan menghubungkan UMKM dengan pembiayaan yang relevan?
+  </div>
+
+  <div class="note reveal delay-3">
+    Sumber: <a href="https://serangkota.go.id/po-content/uploads/IPKD24/Perwal_tentang_RKPD_Kota_Serang_Tahun_2024..pdf" target="_blank" rel="noopener">RPJMD/RKPD Kota Serang</a> (data 2020–2024); <a href="https://banten.antaranews.com/amp/berita/369278/pemkot-serang-fasilitasi-legalitas-hingga-desain-kemasan-gratis-bagi-umkm" target="_blank" rel="noopener">ANTARA Banten, 22 Januari 2026</a>. Data 2026 disebut “hampir 50.000” dan berbeda basis dengan tabel RPJMD, sehingga tidak diperlakukan sebagai perbandingan langsung.
+  </div>
+  <div class="footer"><span>TAMARA • Data-Driven Problem</span><span>02</span></div>
+</section>
+
+
+<!-- 03 -->
+<section class="slide" data-slide="3">
+  <div class="section-head reveal">
+    <div><div class="kicker">02 • Masalah Inti</div><h2>Empat Masalah TAMARA Jawab dengan Data</h2></div>
+    <div class="slide-tag">PROBLEM</div>
+  </div>
+
+  <div class="grid g2" style="margin-top:28px">
+    <div class="card reveal delay-1">
+      <div class="num">01</div><h3>Pencatatan Keuangan Lemah</h3>
+      <p>Tanpa pencatatan yang tertib, kondisi usaha sulit dipantau dan data sulit digunakan sebagai dasar analisis.</p>
+      <div class="pill" style="margin-top:14px">DATA → KELUARAN</div>
+    </div>
+    <div class="card reveal delay-2">
+      <div class="num">02</div><h3>Kebutuhan Modal Tidak Terukur</h3>
+      <p>UMKM perlu mengetahui berapa modal yang dibutuhkan, untuk apa digunakan, dan bagaimana kebutuhan tersebut terkait dengan kondisi usaha.</p>
+      <div class="pill" style="margin-top:14px">DATA → KEBUTUHAN</div>
+    </div>
+    <div class="card reveal delay-2">
+      <div class="num">03</div><h3>Pilihan Pembiayaan Terbatas</h3>
+      <p>Alternatif pembiayaan perlu disesuaikan dengan tujuan penggunaan dana dan karakteristik usaha, bukan sekadar tersedia atau tidak.</p>
+      <div class="pill" style="margin-top:14px">KEBUTUHAN → SKEMA</div>
+    </div>
+    <div class="card reveal delay-3">
+      <div class="num">04</div><h3>Keputusan Tidak Berbasis Data</h3>
+      <p>Ketika data usaha tidak tertata, keputusan pembiayaan menjadi kurang terarah dan proses penghubungan dengan mitra menjadi lebih sulit.</p>
+      <div class="pill" style="margin-top:14px">ANALISIS → KEPUTUSAN</div>
+    </div>
+  </div>
+
+  <div class="flow" style="margin-top:28px">
+    <div class="step reveal"><b>INPUT</b><span>Transaksi • omzet • biaya • modal • tujuan usaha</span></div>
+    <div class="arrow">→</div>
+    <div class="step reveal delay-1"><b>MASALAH</b><span>Data tidak tertata • kebutuhan tidak terukur</span></div>
+    <div class="arrow">→</div>
+    <div class="step reveal delay-2"><b>RISIKO</b><span>Keputusan pembiayaan kurang terarah</span></div>
+    <div class="arrow">→</div>
+    <div class="step reveal delay-3"><b>KEBUTUHAN</b><span>Sistem yang mengubah data menjadi kesiapan pembiayaan</span></div>
+  </div>
+
+  <div class="bigquote reveal delay-3">
+    Bank Indonesia menekankan peningkatan kapabilitas dan eligibilitas UMKM agar lebih <b>bankable</b>, termasuk melalui penguatan kapasitas dan akses pembiayaan/digitalisasi keuangan.
+  </div>
+  <div class="note reveal delay-3">
+    Sumber: <a href="https://www.bi.go.id/id/publikasi/kajian/Pages/Kajian-Model-Bisnis-Multichannel-Financing.aspx" target="_blank" rel="noopener">Bank Indonesia — Kajian Model Bisnis Multichannel Financing</a>.
+  </div>
+  <div class="footer"><span>TAMARA • Masalah → Kebutuhan Sistem</span><span>03</span></div>
+</section>
+
+<!-- 04 -->
+<section class="slide" data-slide="4">
+  <div class="section-head reveal"><div><div class="kicker">03 • Solusi Terintegrasi</div><h2>Tiga Pilar Utama TAMARA</h2></div><div class="slide-tag">SOLUTION</div></div>
+  <p class="lead reveal delay-1">TAMARA menyatukan tiga fungsi utama dalam satu ekosistem untuk kebutuhan modal UMKM.</p>
+  <div class="grid g3" style="margin-top:38px">
+    <div class="card reveal delay-1"><span class="pill">01</span><h3 style="margin-top:16px">KELOLA KEUANGAN</h3><p>Catat pemasukan dan pengeluaran, pahami arus kas, dan pantau kondisi usaha.</p></div>
+    <div class="card reveal delay-2"><span class="pill">02</span><h3 style="margin-top:16px">ANALISIS MODAL &amp; RENCANA USAHA</h3><p>Hitung kebutuhan modal, identifikasi tujuan penggunaan dana, dan susun rekomendasi.</p></div>
+    <div class="card reveal delay-3"><span class="pill">03</span><h3 style="margin-top:16px">HUBUNGKAN</h3><p>Akses pembiayaan syariah melalui mitra yang relevan dengan kebutuhan usaha.</p></div>
+  </div>
+  <div class="bigquote reveal delay-3">TAMARA bukan sekadar tempat mengajukan pembiayaan. <b>TAMARA membangun proses dari data usaha sampai kesiapan pembiayaan.</b></div>
+  <div class="footer"><span>TAMARA • Solusi Terintegrasi</span><span>04</span></div>
+</section>
+
+<!-- 05 -->
+<section class="slide" data-slide="5">
+  <div class="section-head reveal"><div><div class="kicker">04 • Fokus Awal</div><h2>UMKM Produktif Kota Serang</h2></div><div class="slide-tag">TARGET</div></div>
+  <p class="lead reveal delay-1">Fokus awal TAMARA diarahkan pada UMKM produktif di Kota Serang dengan empat sektor utama.</p>
+  <div class="grid g4" style="margin-top:34px">
+    <div class="card reveal"><div class="num">01</div><h3>Perdagangan</h3><p>Toko kelontong, grosir, dan usaha perdagangan.</p></div>
+    <div class="card reveal delay-1"><div class="num">02</div><h3>Kuliner</h3><p>Rumah makan, katering, dan jajanan.</p></div>
+    <div class="card reveal delay-2"><div class="num">03</div><h3>Jasa &amp; Kreatif</h3><p>Bengkel, laundry, percetakan, dan usaha jasa.</p></div>
+    <div class="card reveal delay-3"><div class="num">04</div><h3>Pertanian &amp; Perikanan</h3><p>Petani, pembudidaya, dan pengolah hasil.</p></div>
+  </div>
+  <div class="bigquote reveal delay-3"><b>Fokus awal:</b> UMKM produktif Kota Serang sebagai konteks penerapan ekosistem TAMARA.</div>
+  <div class="footer"><span>TAMARA • Fokus Awal</span><span>05</span></div>
+</section>
+
+<!-- 06 -->
+<section class="slide" data-slide="6">
+  <div class="section-head reveal"><div><div class="kicker">05 • Alur TAMARA</div><h2>Dari Data Usaha hingga Pembiayaan</h2></div><div class="slide-tag">FLOW</div></div>
+  <div class="flow">
+    <div class="step reveal"><b>01 • DAFTAR</b><span>UMKM membuat profil usaha.</span></div><div class="arrow">→</div>
+    <div class="step reveal delay-1"><b>02 • CATAT</b><span>Masukkan transaksi, omzet, biaya, stok, dan kebutuhan usaha.</span></div><div class="arrow">→</div>
+    <div class="step reveal delay-2"><b>03 • ANALISIS</b><span>TAMARA membaca kondisi dan kebutuhan modal.</span></div><div class="arrow">→</div>
+    <div class="step reveal delay-3"><b>04 • SIMULASI</b><span>Simulasikan kebutuhan pembiayaan.</span></div>
+  </div>
+  <div class="flow">
+    <div class="step reveal"><b>05 • REKOMENDASI</b><span>Alternatif pembiayaan berdasarkan kebutuhan usaha.</span></div><div class="arrow">→</div>
+    <div class="step reveal delay-1"><b>06 • MITRA PEMBIAYAAN</b><span>Pengajuan diteruskan kepada mitra.</span></div><div class="arrow">→</div>
+    <div class="step reveal delay-2"><b>07 • MONITORING</b><span>Pantau pembiayaan dan perkembangan usaha.</span></div>
+  </div>
+  <div class="bigquote reveal delay-3"><b>Daftar → Catat → Analisis → Simulasi → Rekomendasi → Mitra → Monitoring</b></div>
+  <div class="footer"><span>TAMARA • Alur Platform</span><span>06</span></div>
+</section>
+
+<!-- 07 -->
+<section class="slide" data-slide="7">
+  <div class="section-head reveal"><div><div class="kicker">06 • Alternatif Skema</div><h2>Pembiayaan Berbasis Syariah</h2></div><div class="slide-tag">SYARIAH</div></div>
+  <p class="lead reveal delay-1">TAMARA menyediakan konteks alternatif pembiayaan syariah yang dapat dipertimbangkan sesuai kebutuhan usaha.</p>
+  <div class="grid g3" style="margin-top:34px">
+    <div class="card reveal"><div class="num">01</div><h3>Murabahah</h3><p>Jual beli dengan margin yang disepakati. Contoh: pembelian barang atau aset usaha.</p></div>
+    <div class="card reveal delay-1"><div class="num">02</div><h3>Musyarakah</h3><p>Kerja sama permodalan dengan pembagian hasil. Contoh: pengembangan usaha.</p></div>
+    <div class="card reveal delay-2"><div class="num">03</div><h3>Ijarah</h3><p>Pembiayaan berbasis sewa dengan imbalan. Contoh: sewa aset atau jasa.</p></div>
+  </div>
+  <div class="bigquote reveal delay-3">TAMARA tidak menetapkan satu skema secara sepihak. <b>Keputusan pembiayaan tetap berada pada proses dan ketentuan mitra.</b></div>
+  <div class="footer"><span>TAMARA • Pembiayaan Syariah</span><span>07</span></div>
+</section>
+
+<!-- 08 -->
+<section class="slide" data-slide="8">
+  <div class="section-head reveal"><div><div class="kicker">07 • Studi Kasus</div><h2>Dari Data Mentah → Kesiapan Pembiayaan</h2></div><div class="slide-tag">CASE STUDY</div></div>
+  <div class="grid g3" style="margin-top:28px">
+    <div class="case reveal"><span class="pill">DATA USAHA</span><h3 style="margin-top:14px">Kondisi Awal</h3><p class="text">Omzet Rp25 juta, biaya operasional Rp15 juta, modal tersedia Rp5 juta, dan kebutuhan modal Rp20 juta.</p></div>
+    <div class="case reveal delay-1"><span class="pill">ANALISIS TAMARA</span><h3 style="margin-top:14px">Identifikasi</h3><p class="text">Kebutuhan pembiayaan dianalisis berdasarkan kondisi usaha, tujuan penggunaan dana, dan kebutuhan modal.</p></div>
+    <div class="case reveal delay-2"><span class="pill">REKOMENDASI</span><h3 style="margin-top:14px">Hasil</h3><p class="text">Alternatif pembiayaan dipertimbangkan berdasarkan hasil analisis kebutuhan usaha.</p></div>
+  </div>
+  <div class="case reveal delay-3" style="margin-top:22px"><h3>Alur Mitra Pembiayaan</h3><div class="flow" style="margin-top:16px">
+    <div class="step"><b>VERIFIKASI</b><span>Pemeriksaan data.</span></div><div class="arrow">→</div><div class="step"><b>PENILAIAN</b><span>Penilaian kelayakan.</span></div><div class="arrow">→</div><div class="step"><b>PERSETUJUAN</b><span>Keputusan mitra.</span></div><div class="arrow">→</div><div class="step"><b>PENCAIRAN</b><span>Sesuai ketentuan.</span></div>
+  </div></div>
+  <div class="note reveal delay-3">Angka pada contoh ini mengikuti ilustrasi yang terdapat dalam infografis TAMARA.</div>
+  <div class="footer"><span>TAMARA • Studi Kasus</span><span>08</span></div>
+</section>
+
+<!-- 09 -->
+<section class="slide" data-slide="9">
+  <div class="section-head reveal"><div><div class="kicker">08 • Core Features</div><h2>Fitur Utama TAMARA</h2></div><div class="slide-tag">PRODUCT</div></div>
+  <div class="grid g2" style="margin-top:28px">
+    <div class="card reveal"><div class="num">01</div><h3>Business Dashboard</h3><p>Melihat omzet, biaya, arus kas, dan kondisi usaha.</p></div>
+    <div class="card reveal delay-1"><div class="num">02</div><h3>Financial Management</h3><p>Pencatatan transaksi dan pengelolaan keuangan.</p></div>
+    <div class="card reveal delay-2"><div class="num">03</div><h3>Capital Analyzer</h3><p>Menganalisis kebutuhan modal dan tujuan penggunaan dana.</p></div>
+    <div class="card reveal delay-3"><div class="num">04</div><h3>Sharia Financing Gateway</h3><p>Menghubungkan kebutuhan pembiayaan dengan alternatif pembiayaan syariah melalui mitra.</p></div>
+  </div>
+  <div class="grid g4" style="margin-top:18px"><div class="card reveal"><h3>Profil Usaha</h3><p>Informasi dasar UMKM.</p></div><div class="card reveal delay-1"><h3>Notifikasi</h3><p>Informasi proses.</p></div><div class="card reveal delay-2"><h3>Keamanan</h3><p>Perlindungan akses.</p></div><div class="card reveal delay-3"><h3>Monitoring</h3><p>Pemantauan pembiayaan.</p></div></div>
+  <div class="footer"><span>TAMARA • Core Features</span><span>09</span></div>
+</section>
+
+<!-- 10 -->
+<section class="slide" data-slide="10">
+  <div class="section-head reveal"><div><div class="kicker">09 • Model Bisnis</div><h2>Bagaimana TAMARA Menghasilkan Nilai?</h2></div><div class="slide-tag">BUSINESS MODEL</div></div>
+  <div class="arch reveal"><div class="node"><strong>UMKM</strong><small>Data usaha &amp; kebutuhan modal</small></div><div style="font-size:27px;font-weight:900">↔</div><div class="node main"><strong>TAMARA</strong><small>Data → Analisis → Simulasi → Hubungkan</small></div><div style="font-size:27px;font-weight:900">↔</div><div class="node"><strong>MITRA PEMBIAYAAN</strong><small>Akses pembiayaan</small></div></div>
+  <div class="grid g3"><div class="card reveal"><div class="stat">Platform / Service Fee</div><p>Pendapatan dari layanan platform.</p></div><div class="card reveal delay-1"><div class="stat">Premium Business Tools</div><p>Layanan tambahan untuk kebutuhan bisnis.</p></div><div class="card reveal delay-2"><div class="stat">B2B Partnership</div><p>Kolaborasi dengan mitra dan institusi.</p></div></div>
+  <div class="bigquote reveal delay-3">Nilai TAMARA: <b>menghubungkan UMKM, data usaha, analisis, dan mitra pembiayaan</b> dalam satu ekosistem.</div>
+  <div class="footer"><span>TAMARA • Model Bisnis</span><span>10</span></div>
+</section>
+
+<!-- 11 -->
+<section class="slide" data-slide="11">
+  <div class="section-head reveal"><div><div class="kicker">10 • Trust &amp; Risk</div><h2>Trust &amp; Risk Framework</h2></div><div class="slide-tag">TRUST</div></div>
+  <div class="grid g3" style="margin-top:28px">
+    <div class="card reveal"><div class="num">01</div><h3>Data Security</h3><p>Perlindungan dan pembatasan akses terhadap data pengguna.</p></div>
+    <div class="card reveal delay-1"><div class="num">02</div><h3>Risk Assessment</h3><p>Analisis kondisi usaha sebelum diteruskan kepada mitra.</p></div>
+    <div class="card reveal delay-2"><div class="num">03</div><h3>Sharia Governance</h3><p>Memperhatikan proses pembiayaan berdasarkan prinsip syariah.</p></div>
+    <div class="card reveal delay-1"><div class="num">04</div><h3>Partner Verification</h3><p>Verifikasi mitra pembiayaan melalui proses yang diperlukan.</p></div>
+    <div class="card reveal delay-2"><div class="num">05</div><h3>Transparency</h3><p>Transparansi mengenai pembiayaan, skema, biaya, dan kewajiban.</p></div>
+  </div>
+  <div class="bigquote reveal delay-3">Kepercayaan menjadi bagian penting karena TAMARA mempertemukan <b>data usaha dan kebutuhan pembiayaan</b> dengan mitra.</div>
+  <div class="footer"><span>TAMARA • Trust &amp; Risk Framework</span><span>11</span></div>
+</section>
+
+<!-- 12 -->
+<section class="slide" data-slide="12">
+  <div class="section-head reveal"><div><div class="kicker">11 • Outcome</div><h2>Dari Pencatatan Usaha Menjadi Keputusan Pembiayaan</h2></div><div class="slide-tag">CLOSING</div></div>
+  <div class="flow" style="margin-top:38px"><div class="step reveal"><b>CATAT</b><span>Pahami kondisi usaha.</span></div><div class="arrow">→</div><div class="step reveal delay-1"><b>ANALISIS</b><span>Ukur kebutuhan modal.</span></div><div class="arrow">→</div><div class="step reveal delay-2"><b>HUBUNGKAN</b><span>Akses pembiayaan melalui mitra.</span></div></div>
+  <div class="grid g3" style="margin-top:34px"><div class="card reveal"><div class="stat">UMKM Lebih Terarah</div><p>Data usaha menjadi dasar pengambilan keputusan.</p></div><div class="card reveal delay-1"><div class="stat">Pembiayaan Lebih Terarah</div><p>Kebutuhan modal dihubungkan dengan alternatif pembiayaan.</p></div><div class="card reveal delay-2"><div class="stat">Ekonomi Lokal Bertumbuh</div><p>Ekosistem pembiayaan mendukung pertumbuhan UMKM.</p></div></div>
+  <div class="bigquote reveal delay-3"><b>TAMARA</b><br>“Dari pencatatan usaha menjadi keputusan pembiayaan yang lebih terarah.”</div>
+  <div class="footer"><span>Kelola Modal • Rencanakan Usaha • Tumbuh Secara Syariah</span><span>12</span></div>
+</section>
+</div>
+
+<div class="toast" id="toast">Slide 1 / 12</div>
+
+<script>
+/* =========================================================
+   TAMARA — SMOOTH INTERACTION
+   Keyboard: ← → / Space
+   ========================================================= */
+const slides=[...document.querySelectorAll(".slide")];
+const deck=document.querySelector(".deck");
+const sideButtons=[...document.querySelectorAll(".side-nav button")];
+const progress=document.getElementById("progress");
+const toast=document.getElementById("toast");
+const glow=document.getElementById("cursorGlow");
+const prevBtn=document.getElementById("prev");
+const nextBtn=document.getElementById("next");
+let active=0;
+let isNavigating=false;
+let navigationTimer=null;
+
+function showToast(text){
+  toast.textContent=text;
+  toast.classList.add("show");
+  clearTimeout(window.toastTimer);
+  window.toastTimer=setTimeout(()=>toast.classList.remove("show"),900);
+}
+
+function syncSideMenu(){
+  sideButtons.forEach((btn,i)=>{
+    const on=i===active;
+    btn.classList.toggle("active",on);
+    btn.setAttribute("aria-current",on?"page":"false");
+  });
+  if(sideButtons[active]){
+    sideButtons[active].scrollIntoView({behavior:"smooth",block:"nearest",inline:"nearest"});
+  }
+}
+
+function updateArrowState(){
+  if(prevBtn) prevBtn.disabled=active<=0;
+  if(nextBtn) nextBtn.disabled=active>=slides.length-1;
+}
+
+function goTo(index, instant=false){
+  if(!slides.length || !deck) return;
+  const target=Math.max(0,Math.min(slides.length-1,Number(index)||0));
+  active=target;
+  slides.forEach((slide,i)=>slide.classList.toggle("is-active",i===active));
+  isNavigating=true;
+  syncSideMenu();
+  updateArrowState();
+  showToast(`Slide ${target+1} / ${slides.length}`);
+
+  const top=Math.max(0,slides[target].offsetTop-(deck.offsetTop||0));
+  deck.scrollTo({top,behavior:instant?"auto":"smooth"});
+
+  clearTimeout(navigationTimer);
+  navigationTimer=setTimeout(()=>{
+    isNavigating=false;
+    updateProgress();
+  },instant?50:700);
+}
+
+function nextSlide(){ goTo(active+1); }
+function prevSlide(){ goTo(active-1); }
+
+prevBtn?.addEventListener("click",e=>{e.preventDefault();e.stopPropagation();prevSlide();});
+nextBtn?.addEventListener("click",e=>{e.preventDefault();e.stopPropagation();nextSlide();});
+sideButtons.forEach(btn=>{
+  btn.addEventListener("click",e=>{
+    e.preventDefault();
+    e.stopPropagation();
+    goTo(Number(btn.dataset.go));
+  });
+});
+
+// Keyboard navigation: arrow keys control TAMARA, never the browser/page.
+window.addEventListener("keydown",e=>{
+  const tag=(e.target?.tagName||"").toLowerCase();
+  if(["input","textarea","select"].includes(tag) || e.target?.isContentEditable) return;
+  const key=e.key;
+  const handled=["ArrowRight","ArrowDown","PageDown"," ","ArrowLeft","ArrowUp","PageUp","Home","End"].includes(key);
+  if(!handled) return;
+  e.preventDefault();
+  e.stopImmediatePropagation();
+  if(key==="ArrowRight" || key==="ArrowDown" || key==="PageDown" || key===" ") nextSlide();
+  else if(key==="ArrowLeft" || key==="ArrowUp" || key==="PageUp") prevSlide();
+  else if(key==="Home") goTo(0);
+  else if(key==="End") goTo(slides.length-1);
+},true);
+
+// Keep the sidebar, arrows, toast and active slide synchronized while scrolling/swiping.
+const slideObserver=new IntersectionObserver(entries=>{
+  if(isNavigating) return;
+  let best=null;
+  entries.forEach(entry=>{
+    if(!entry.isIntersecting) return;
+    if(!best || entry.intersectionRatio>best.intersectionRatio) best=entry;
+  });
+  if(best){
+    const idx=slides.indexOf(best.target);
+    if(idx>=0 && idx!==active){
+      active=idx;
+      slides.forEach((slide,i)=>slide.classList.toggle("is-active",i===active));
+      syncSideMenu();
+      updateArrowState();
+      showToast(`Slide ${active+1} / ${slides.length}`);
+    }
+  }
+},{root:deck,threshold:[.25,.55,.75,.9]});
+slides.forEach(slide=>slideObserver.observe(slide));
+
+function updateProgress(){
+  const max=deck.scrollHeight-deck.clientHeight;
+  progress.style.width=(max>0?(deck.scrollTop/max)*100:0)+"%";
+}
+deck.addEventListener("scroll",updateProgress,{passive:true});
+
+// Mouse wheel / trackpad: one intentional gesture = one slide.
+let wheelLocked=false;
+let wheelAccum=0;
+deck.addEventListener("wheel",e=>{
+  if(Math.abs(e.deltaY)<Math.abs(e.deltaX)*0.8 && Math.abs(e.deltaX)<18) return;
+  e.preventDefault();
+  wheelAccum+=e.deltaY;
+  if(wheelLocked) return;
+  if(Math.abs(wheelAccum)>=45){
+    const direction=wheelAccum>0?1:-1;
+    wheelAccum=0;
+    wheelLocked=true;
+    goTo(active+direction);
+    setTimeout(()=>{wheelLocked=false;},620);
+  }
+},{passive:false});
+
+// Touch swipe: vertical or horizontal swipe changes exactly one slide.
+let touchStartX=0,touchStartY=0,touchStartTime=0,touchMoved=false;
+deck.addEventListener("touchstart",e=>{
+  const t=e.changedTouches[0];
+  touchStartX=t.clientX; touchStartY=t.clientY; touchStartTime=Date.now(); touchMoved=false;
+},{passive:true});
+deck.addEventListener("touchmove",()=>{touchMoved=true;},{passive:true});
+deck.addEventListener("touchend",e=>{
+  const t=e.changedTouches[0];
+  const dx=t.clientX-touchStartX,dy=t.clientY-touchStartY;
+  const distance=Math.max(Math.abs(dx),Math.abs(dy));
+  const duration=Date.now()-touchStartTime;
+  if(!touchMoved || duration>800 || distance<45) return;
+  if(Math.abs(dy)>=Math.abs(dx)){
+    if(dy<0) nextSlide(); else prevSlide();
+  }else{
+    if(dx<0) nextSlide(); else prevSlide();
+  }
+},{passive:true});
+
+// Optional mouse drag for desktop trackpads/mice.
+let dragStartX=0,dragStartY=0,dragging=false;
+deck.addEventListener("pointerdown",e=>{
+  if(e.pointerType!=="mouse") return;
+  if(e.button!==0) return;
+  dragStartX=e.clientX; dragStartY=e.clientY; dragging=true;
+},{passive:true});
+deck.addEventListener("pointerup",e=>{
+  if(!dragging || e.pointerType!=="mouse") return;
+  dragging=false;
+  const dx=e.clientX-dragStartX,dy=e.clientY-dragStartY;
+  if(Math.max(Math.abs(dx),Math.abs(dy))<55) return;
+  if(Math.abs(dy)>=Math.abs(dx)){
+    if(dy<0) nextSlide(); else prevSlide();
+  }else{
+    if(dx<0) nextSlide(); else prevSlide();
+  }
+},{passive:true});
+deck.addEventListener("pointercancel",()=>{dragging=false;},{passive:true});
+
+// Initial state: all 12 slides are preserved and immediately navigable.
+updateProgress();
+slides.forEach((slide,i)=>slide.classList.toggle("is-active",i===active));
+syncSideMenu();
+updateArrowState();
+
+if(window.matchMedia("(pointer:fine)").matches){
+  window.addEventListener("mousemove",e=>{
+    glow.style.left=e.clientX+"px";
+    glow.style.top=e.clientY+"px";
+  },{passive:true});
+}
+
+document.querySelectorAll(".card,.step,.node,.cover-badge").forEach(el=>{
+  el.addEventListener("pointerdown",()=>el.style.transform="translate(2px,2px) scale(.99)");
+  el.addEventListener("pointerup",()=>el.style.transform="");
+  el.addEventListener("pointerleave",()=>el.style.transform="");
+});
+
+// Logo fallback: keeps layout intact if logo.png has not been placed beside the HTML.
+document.querySelectorAll('img[src="./logo.png"]').forEach(img=>{
+  img.addEventListener("error",()=>{
+    img.style.display="none";
+    if(img.parentElement.classList.contains("logo-wrap")){
+      img.parentElement.innerHTML="<strong style='font-size:15px;color:#087a55'>TAMARA</strong>";
+    }
+  });
+});
+
+/* ===== TAMARA PRELOADER ===== */
+(function(){
+  const preloader=document.getElementById("preloader");
+  const bar=document.getElementById("loaderBar");
+  const status=document.getElementById("loaderStatus");
+  if(!preloader) return;
+
+  const states=[
+    ["Membaca identitas TAMARA...",18],
+    ["Menyiapkan ekosistem UMKM...",42],
+    ["Memuat analisis pembiayaan...",67],
+    ["Menyiapkan pengalaman presentasi...",86],
+    ["TAMARA siap.",100]
+  ];
+  let i=0;
+  const tick=()=>{
+    if(i>=states.length){
+      setTimeout(()=>preloader.classList.add("hide"),420);
+      return;
+    }
+    status.textContent=states[i][0];
+    bar.style.width=states[i][1]+"%";
+    i++;
+    setTimeout(tick, i===states.length ? 260 : 380);
+  };
+  window.addEventListener("load",()=>setTimeout(tick,180));
+})();
+
+</script>
+
+
+
+</body>
+</html>
